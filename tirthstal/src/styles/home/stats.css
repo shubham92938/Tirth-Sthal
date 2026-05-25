@@ -1,0 +1,46 @@
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 32px 60px;
+  background: #fff;
+  border-bottom: 1px solid #f0ede8;
+}
+
+.stat__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat__icon {
+  font-size: 36px;
+  line-height: 1;
+  color: #c8610a;
+  opacity: 0.85;
+}
+
+.stat__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat__value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.stat__label {
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+
+/* Divider between items */
+.stat__item:not(:last-child) {
+  padding-right: 48px;
+  border-right: 1px solid #f0ede8;
+}

@@ -1,0 +1,83 @@
+.deity {
+  padding: 40px 60px;
+  background: #fff;
+  border-bottom: 1px solid #f0ede8;
+}
+
+/* Header */
+.deity__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.deity__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.deity__view-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #c8610a;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: gap 0.2s;
+}
+.deity__view-all:hover {
+  gap: 10px;
+}
+
+/* Grid */
+.deity__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+}
+
+/* Card */
+.deity__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 12px;
+  border: 1px solid #f0ede8;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.deity__card:hover {
+  border-color: #c8610a;
+  box-shadow: 0 4px 16px rgba(200, 97, 10, 0.1);
+}
+
+/* Icon */
+.deity__icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff6f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deity__icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+/* Name */
+.deity__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+}

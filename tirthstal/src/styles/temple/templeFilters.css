@@ -1,0 +1,191 @@
+.tfilter {
+  width: 240px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #f0ede8;
+  border-radius: 14px;
+  padding: 24px 20px;
+  height: fit-content;
+  position: sticky;
+  top: 88px;
+}
+
+/* Title */
+.tfilter__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0ede8;
+}
+
+/* Section */
+.tfilter__section {
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #f0ede8;
+}
+.tfilter__section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 16px;
+}
+
+/* Label */
+.tfilter__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+/* Search */
+.tfilter__search {
+  position: relative;
+}
+.tfilter__search-input {
+  width: 100%;
+  padding: 9px 34px 9px 12px;
+  border: 1px solid #e5ddd5;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.tfilter__search-input:focus {
+  border-color: #c8610a;
+}
+.tfilter__search-input::placeholder {
+  color: #bbb;
+}
+.tfilter__search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+/* Deity Checkboxes */
+.tfilter__deity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tfilter__check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.tfilter__checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: #c8610a;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.tfilter__check-name {
+  font-size: 13.5px;
+  color: #333;
+  flex: 1;
+}
+.tfilter__check-count {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* More Button */
+.tfilter__more-btn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #c8610a;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Dropdown */
+.tfilter__dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border: 1px solid #e5ddd5;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s;
+}
+.tfilter__dropdown:hover {
+  border-color: #c8610a;
+}
+.tfilter__dropdown-arrow {
+  transition: transform 0.2s;
+  color: #aaa;
+}
+.tfilter__dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+.tfilter__dropdown-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  list-style: none;
+  z-index: 999;
+  overflow: hidden;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.tfilter__dropdown-list li {
+  padding: 9px 14px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.tfilter__dropdown-list li:hover {
+  background: #fff6f0;
+  color: #c8610a;
+}
+.tfilter__dropdown-list li.selected {
+  color: #c8610a;
+  font-weight: 600;
+  background: #fff6f0;
+}
+
+/* Clear Button */
+.tfilter__clear {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1.5px solid #c8610a;
+  border-radius: 8px;
+  background: transparent;
+  color: #c8610a;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.tfilter__clear:hover {
+  background: #c8610a;
+  color: #fff;
+}

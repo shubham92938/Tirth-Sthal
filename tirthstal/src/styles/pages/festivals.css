@@ -1,0 +1,455 @@
+.fest-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 40px 60px;
+}
+
+/* Breadcrumb */
+.fest-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+.fest-page__breadcrumb a { color: #888; text-decoration: none; }
+.fest-page__breadcrumb a:hover { color: #c8610a; }
+.fest-page__breadcrumb span { color: #1a1a1a; font-weight: 500; }
+
+/* Hero */
+.fest-page__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fdf8f2;
+  border-radius: 16px;
+  padding: 36px 48px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  position: relative;
+}
+.fest-page__title {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+.fest-page__sub {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+}
+.fest-page__hero-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.fest-page__hero-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+/* Filter Bar */
+.fest-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #f0ede8;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.fest-filter__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 180px;
+  color: #aaa;
+}
+.fest-filter__search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+.fest-filter__search input::placeholder { color: #bbb; }
+
+.fest-filter__dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid #f0ede8;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+.fest-filter__dropdown:hover { border-color: #c8610a; }
+.fest-filter__arrow { transition: transform 0.2s; }
+.fest-filter__arrow.open { transform: rotate(180deg); }
+.fest-filter__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  list-style: none;
+  min-width: 180px;
+  z-index: 999;
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+}
+.fest-filter__list li {
+  padding: 9px 16px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.fest-filter__list li:hover { background: #fff6f0; color: #c8610a; }
+.fest-filter__list li.selected { color: #c8610a; font-weight: 600; background: #fff6f0; }
+
+.fest-filter__apply-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #c8610a;
+  color: #fff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.fest-filter__apply-btn:hover { background: #a84f08; }
+
+.fest-filter__reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  color: #888;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.fest-filter__reset-btn:hover { color: #c8610a; }
+
+/* Body Layout */
+.fest-page__body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Section Header */
+.fest-page__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.fest-page__section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.fest-page__view-all {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13.5px;
+  color: #c8610a;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Festival Grid */
+.fest-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+/* Festival Card */
+.fest-card {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #f0ede8;
+  background: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.25s;
+}
+.fest-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+
+.fest-card__img-wrap {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+}
+.fest-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.fest-card:hover .fest-card__img { transform: scale(1.06); }
+
+.fest-card__month-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+.fest-card__fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #bbb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: color 0.2s;
+}
+.fest-card__fav.active { color: #e53e3e; }
+
+.fest-card__info {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.fest-card__top-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.fest-card__deity-icon { font-size: 16px; }
+.fest-card__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+.fest-card__location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #888;
+}
+.fest-card__location svg { color: #c8610a; }
+.fest-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+.fest-card__date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: #888;
+}
+.fest-card__date svg { color: #c8610a; }
+.fest-card__type-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+/* Load More */
+.fest-page__load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+.fest-page__load-more button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 32px;
+  background: #fff;
+  border: 1.5px solid #e5ddd5;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.2s, color 0.2s;
+}
+.fest-page__load-more button:hover { border-color: #c8610a; color: #c8610a; }
+
+/* ── Sidebar ── */
+.fest-page__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 88px;
+}
+.fest-sidebar__box {
+  background: #fff;
+  border: 1px solid #f0ede8;
+  border-radius: 14px;
+  padding: 20px;
+}
+.fest-sidebar__box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.fest-sidebar__box-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.fest-sidebar__view-cal {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  color: #c8610a;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Upcoming List */
+.fest-sidebar__upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.fest-sidebar__upcoming-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.fest-sidebar__date-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #c8610a;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-width: 46px;
+  flex-shrink: 0;
+}
+.fest-sidebar__date-month { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+.fest-sidebar__date-day   { font-size: 18px; font-weight: 800; line-height: 1.1; }
+.fest-sidebar__upcoming-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+.fest-sidebar__upcoming-loc  { font-size: 12px; color: #888; margin-bottom: 2px; }
+.fest-sidebar__upcoming-days { font-size: 12px; color: #c8610a; font-weight: 600; }
+
+/* Newsletter */
+.fest-sidebar__newsletter {
+  text-align: center;
+  background: #fdf8f2;
+}
+.fest-sidebar__news-icon { font-size: 28px; margin-bottom: 8px; }
+.fest-sidebar__newsletter h3 { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+.fest-sidebar__newsletter p  { font-size: 12.5px; color: #888; line-height: 1.6; margin-bottom: 14px; }
+.fest-sidebar__news-input {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5ddd5;
+}
+.fest-sidebar__news-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-family: 'Poppins', sans-serif;
+  color: #1a1a1a;
+}
+.fest-sidebar__news-input button {
+  background: #3b0a0a;
+  color: #fff;
+  border: none;
+  padding: 9px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Guide */
+.fest-sidebar__guide-title { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 14px; }
+.fest-sidebar__guide-list  { display: flex; flex-direction: column; gap: 0; }
+.fest-sidebar__guide-item  {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0ede8;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.fest-sidebar__guide-item:last-child { border-bottom: none; }
+.fest-sidebar__guide-icon  { font-size: 20px; flex-shrink: 0; }
+.fest-sidebar__guide-name  { font-size: 13.5px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+.fest-sidebar__guide-sub   { font-size: 12px; color: #888; }
+.fest-sidebar__guide-arrow { color: #ccc; margin-left: auto; flex-shrink: 0; }
