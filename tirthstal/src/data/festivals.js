@@ -1,4 +1,12 @@
+import { festivalImages } from "./templeImages";
+
+
+
 export const festivals = [
+
+
+
+
   {
     id: 1,
     name: "Mahashivratri",
@@ -599,3 +607,8 @@ export const festivals = [
     isUpcoming: true
   }
 ];
+
+export const festivalsWithImages = festivals.map((f) => ({
+  ...f,
+  image: festivalImages[f.slug] || f.image,
+}));

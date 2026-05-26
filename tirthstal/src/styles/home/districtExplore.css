@@ -112,3 +112,34 @@
   border-radius: 50px;
   backdrop-filter: blur(4px);
 }
+
+
+.district__card-link {
+  text-decoration: none;
+  display: block;
+}
+
+.district__load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.district__load-more button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: none;
+  border: 1.5px solid #c8610a;
+  border-radius: 50px;
+  color: #c8610a;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.district__load-more button:hover {
+  background: #c8610a;
+  color: #fff;
+}

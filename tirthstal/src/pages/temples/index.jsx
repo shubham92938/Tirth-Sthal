@@ -7,12 +7,12 @@ import TempleCard    from "../../components/temple/TempleCard";
 import { getAllTemples } from "../../data/temple"
 import "../../styles/pages/temples.css";
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 10;
 
 export default function Temples() {
   const allTemples = getAllTemples("Madhya Pradesh");
 
-  const [filters,      setFilters]      = useState({
+  const [filters, setFilters] = useState({
     search: "", deities: [], district: "All Districts", sort: "Popularity"
   });
   const [currentPage,  setCurrentPage]  = useState(1);
@@ -100,7 +100,7 @@ export default function Temples() {
 
         <div className="temples-page__meta">
           <span className="temples-page__count">
-            ☰ Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–
+             Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–
             {Math.min(currentPage * ITEMS_PER_PAGE, filtered.length)} of {filtered.length}
           </span>
         </div>

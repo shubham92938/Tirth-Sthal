@@ -18,7 +18,7 @@ import templesData from '../../data/temple';
 
 const ITEMS_PER_PAGE = 8;
 
-const DistrictPage = () => {
+const Districts = () => {
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState('popularity');
@@ -242,5 +242,5 @@ const DistrictPage = () => {
   );
 };
 
-export default DistrictPage;
+export default Districts;
 ```

@@ -1,3 +1,6 @@
+import { districtImages } from "./templeImages";
+
+
 export const districts = [
   {
     id: 1,
@@ -1048,3 +1051,14 @@ export const districtNames = [
   "Mandla",
   "Dindori"
 ];
+
+
+
+export const getDistrictWithImage = (slug) => {
+  const district = districts.find((d) => d.slug === slug);
+  if (!district) return null;
+  return {
+    ...district,
+    image: districtImages[slug] || district.image,
+  };
+};

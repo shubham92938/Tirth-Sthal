@@ -1,3 +1,5 @@
+import { templeImages } from "./templeImages";
+
 export const templesData = {
   "Madhya Pradesh": {
 
@@ -17,7 +19,10 @@ export const templesData = {
         timings: { morning: "4:00 AM - 11:00 AM", evening: "5:00 PM - 10:00 PM" },
         aartiTimings: { bhasmaAarti: "4:00 AM", naivedyam: "7:30 AM", mahaPooja: "10:00 AM", sandhyaAarti: "6:00 PM", shyanAarti: "10:30 PM" },
         festivals: ["Mahashivratri", "Shravan Month", "Navratri"],
-        images: ["/images/temples/mahakal1.jpg", "/images/temples/mahakal2.jpg", "/images/temples/mahakal3.jpg"],
+       images: [
+  "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+  "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=800",
+],
         coordinates: { lat: 23.1828, lng: 75.7682 },
         rating: 4.9,
         reviews: 15420,
@@ -615,11 +620,11 @@ export const templesData = {
 // ── Helper functions ────────────────────────────────────
 
 // Get all temples flat array for a state
-export const getAllTemples = (state = "Madhya Pradesh") => {
-  const stateData = templesData[state];
-  if (!stateData) return [];
-  return Object.values(stateData).flat();
-};
+// export const getAllTemples = (state = "Madhya Pradesh") => {
+//   const stateData = templesData[state];
+//   if (!stateData) return [];
+//   return Object.values(stateData).flat();
+// };
 
 // Get temples by district
 export const getTemplesByDistrict = (state = "Madhya Pradesh", district) => {
@@ -627,12 +632,46 @@ export const getTemplesByDistrict = (state = "Madhya Pradesh", district) => {
 };
 
 // Get temple by slug
-export const getTempleBySlug = (slug) => {
-  const all = getAllTemples();
-  return all.find((t) => t.slug === slug) || null;
-};
+// export const getTempleBySlug = (slug) => {
+//   const all = getAllTemples();
+//   return all.find((t) => t.slug === slug) || null;
+// };
 
 // Get all districts for a state
 export const getDistricts = (state = "Madhya Pradesh") => {
   return Object.keys(templesData[state] || {});
+};
+
+
+
+
+
+
+
+
+
+// One place to manage ALL temple images
+// Just update this file when you get real images
+
+
+
+
+// Updated helper — auto injects images by slug
+export const getAllTemples = (state = "Madhya Pradesh") => {
+  const stateData = templesData[state];
+  if (!stateData) return [];
+  return Object.values(stateData).flat().map((t) => ({
+    ...t,
+    images: templeImages[t.slug] || t.images,
+  }));
+};
+
+export const getTempleBySlug = (slug) => {
+  const all = getAllTemples();
+  const temple = all.find((t) => t.slug === slug) || null;
+  if (!temple) return null;
+  return {
+    ...temple,
+    images: templeImages[slug] || temple.images,
+  };
 };
