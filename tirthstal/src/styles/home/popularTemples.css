@@ -151,3 +151,41 @@
   transition: background 0.2s;
 }
 .popular__arrow:hover { background: #c8610a; color: #fff; }
+
+
+@media (max-width: 768px) {
+  .popular {
+    padding: 24px 16px;
+  }
+  .popular__grid {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+  .popular__grid::-webkit-scrollbar { display: none; }
+
+  .popular__card {
+    flex: 0 0 160px;
+    min-width: 160px;
+    scroll-snap-align: start;
+  }
+  .popular__img-wrap { height: 150px; }
+  .popular__name {
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+  .popular__city  { font-size: 11px; }
+  .popular__deity { font-size: 10.5px; }
+  .popular__arrow { display: none; }
+}
+
+@media (max-width: 380px) {
+  .popular__card   { flex: 0 0 145px; min-width: 145px; }
+  .popular__img-wrap { height: 130px; }
+}

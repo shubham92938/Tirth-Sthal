@@ -112,32 +112,50 @@ export default function DistrictPage() {
           </div>
 
           {/* Hero */}
-        <div className="hero-overlay">
-          <div className="dist-main__hero">
-            <div className="dist-main__hero-left">
-              <motion.h1
-                className="dist-main__title"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {currentDistrict?.name} District, {currentDistrict?.state}
-              </motion.h1>
-              <motion.p
-                className="dist-main__desc"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-              >
-                Explore {distTemples.length} temples in {currentDistrict?.name} district.
-                Discover ancient temples, spiritual places and seek blessings from the divine.
-              </motion.p>
-            </div>
-            <div className="dist-main__hero-img">
-              <img src="/images/hero-temples.jpeg" alt=""
-                onError={(e) => e.target.style.display = "none"} />
-            </div>
-          </div></div>
+ 
+<div className="dist-main__hero">
+  <img
+    // src={currentDistrict?.image || "./images/hero-temples.jpeg"}
+    // alt={currentDistrict?.name}
+    src="./images/hero-temples.jpeg"
+    alt={currentDistrict?.name}
+    className="dist-main__hero-bg"
+    onError={(e) => e.target.src = "./images/hero-temples.jpeg"}
+  />
+  <div className="dist-main__hero-overlay" />
+  <div className="dist-main__hero-content">
+    <motion.h1
+      className="dist-main__title"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {currentDistrict?.name} District
+      <span className="dist-main__title-state">, {currentDistrict?.state}</span>
+    </motion.h1>
+    <motion.p
+      className="dist-main__desc"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.1 }}
+    >
+      Explore {distTemples.length} temples in {currentDistrict?.name} district.
+      Discover ancient temples, spiritual places and seek blessings from the divine.
+    </motion.p>
+
+    {/* Quick Info Pills */}
+    <motion.div
+      className="dist-main__hero-pills"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.2 }}
+    >
+      <span className="hero-pill">🛕 {distTemples.length} Temples</span>
+      <span className="hero-pill">📍 {currentDistrict?.state}</span>
+      <span className="hero-pill">🗺️ {currentDistrict?.bestTimeToVisit || "Oct - Mar"}</span>
+    </motion.div>
+  </div>
+</div>
 
           {/* Stats Bar */}
           <div className="dist-main__stats">

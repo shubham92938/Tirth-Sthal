@@ -189,3 +189,9 @@
   background: #c8610a;
   color: #fff;
 }
+
+.map-filter__section {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0ede8;
+}

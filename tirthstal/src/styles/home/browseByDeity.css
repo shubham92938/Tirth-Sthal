@@ -81,3 +81,32 @@
   color: #1a1a1a;
   text-align: center;
 }
+@media (max-width: 768px) {
+  .deity {
+    padding: 24px 16px;
+  }
+  .deity__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .deity__card {
+    padding: 14px 8px;
+    gap: 8px;
+  }
+  .deity__icon-wrap {
+    width: 44px;
+    height: 44px;
+  }
+  .deity__icon { font-size: 22px; }
+  .deity__name { font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .deity__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .deity__icon-wrap { width: 38px; height: 38px; }
+  .deity__icon { font-size: 18px; }
+  .deity__name { font-size: 11px; }
+}

@@ -1,24 +1,29 @@
 @import "./variables.css";
+@import "./reset.css";
+@import "./typography.css";
+@import "./animations.css";
+@import "./responsive.css";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background: #ffffff;
   color: #1a1a1a;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-ul, li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+img { max-width: 100%; display: block; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; margin: 0; padding: 0; }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
 
-img {
-  max-width: 100%;
-  display: block;
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+
+  /* Kill overflow on root */
+  #root { max-width: 100vw; overflow-x: hidden; }
 }

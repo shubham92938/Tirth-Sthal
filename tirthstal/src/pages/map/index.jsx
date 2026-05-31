@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { FiHome, FiChevronRight, FiSearch, FiChevronDown,
          FiRefreshCw, FiList, FiMapPin, FiNavigation,
-         FiBookmark, FiX } from "react-icons/fi";
+         FiBookmark, FiX, FiFilter } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAllTemples } from "../../data/temple";
 import "../../styles/map/mapPage.css";
@@ -86,6 +86,21 @@ export default function MapPage() {
   const [flyCenter,       setFlyCenter]       = useState(null);
   const [showList,        setShowList]        = useState(false);
   const [activeFilters,   setActiveFilters]   = useState([]);
+  const [filterOpen,      setFilterOpen]      = useState(false);
+
+  // Lock scroll when filter drawer open on mobile
+  useEffect(() => {
+    document.body.style.overflow = filterOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [filterOpen]);
+
+  const activeFilterCount =
+    (search ? 1 : 0) +
+    (selState !== "All States" ? 1 : 0) +
+    (selDistrict !== "All Districts" ? 1 : 0) +
+    (selType !== "All Types" ? 1 : 0) +
+    (selDeity !== "All Deities" ? 1 : 0) +
+    activeFilters.length;
 
   // ── Filter logic ──
   const filtered = allTemples.filter((t) => {
@@ -126,7 +141,7 @@ export default function MapPage() {
           {options.map((o) => (
             <li
               key={o}
-              className={value === o ? "selected" : ""}
+              className={value === 0 ? "selected" : ""}
               onClick={(e) => { e.stopPropagation(); onSelect(o); setOpen(false); }}
             >
               {o}
@@ -162,11 +177,25 @@ export default function MapPage() {
         </div>
       </div>
 
+      {/* ── Mobile Filter Button ── */}
+      <div className="map-page__mobile-bar">
+        <button
+          className="map-page__filter-btn"
+          onClick={() => setFilterOpen(true)}
+        >
+          <FiFilter size={15} />
+          Filters
+          {activeFilterCount > 0 && (
+            <span className="map-page__filter-badge">{activeFilterCount}</span>
+          )}
+        </button>
+      </div>
+
       {/* ── Main Body ── */}
       <div className="map-page__body">
 
-        {/* ── Left Filters ── */}
-        <aside className="map-filter">
+        {/* ── Left Filters (desktop only) ── */}
+        <aside className="map-filter map-filter--desktop">
           <div className="map-filter__top">
             <h3>Filters</h3>
             <button className="map-filter__reset" onClick={resetFilters}>
@@ -414,7 +443,7 @@ export default function MapPage() {
               {nearbyTemples.map((t, i) => (
                 <div key={i} className="map-sidebar__nearby-item">
                   <div className="nearby-item__img">
-                    <img src="/images/placeholder-temple.jpg" alt={t.name}
+                    <img src="/images/hero-temples.jpeg" alt={t.name}
                       onError={(e) => { e.target.src = "/images/placeholder-temple.jpg"; }} />
                   </div>
                   <div className="nearby-item__info">
@@ -431,6 +460,76 @@ export default function MapPage() {
 
         </aside>
       </div>
+
+      {/* ── Mobile Filter Drawer ── */}
+      <AnimatePresence>
+        {filterOpen && (
+          <>
+            <motion.div
+              className="map-page__filter-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setFilterOpen(false)}
+            />
+            <motion.div
+              className="map-page__filter-drawer"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              <div className="map-page__drawer-header">
+                <h3>Filters</h3>
+                <button onClick={() => setFilterOpen(false)}><FiX size={20} /></button>
+              </div>
+              <div className="map-page__drawer-body">
+                {/* Search */}
+                <div className="map-filter__section">
+                  <p className="map-filter__label">Search Temple</p>
+                  <div className="map-filter__search">
+                    <input type="text" placeholder="Search temple name..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                    <FiSearch size={14} />
+                  </div>
+                </div>
+                <div className="map-filter__section">
+                  <p className="map-filter__label">Select State</p>
+                  <Dropdown value={selState} options={stateOptions} open={stateOpen} setOpen={setStateOpen} onSelect={setSelState} />
+                </div>
+                <div className="map-filter__section">
+                  <p className="map-filter__label">Select District</p>
+                  <Dropdown value={selDistrict} options={districtOptions} open={districtOpen} setOpen={setDistrictOpen} onSelect={setSelDistrict} />
+                </div>
+                <div className="map-filter__section">
+                  <p className="map-filter__label">Temple Type</p>
+                  <Dropdown value={selType} options={typeOptions} open={typeOpen} setOpen={setTypeOpen} onSelect={setSelType} />
+                </div>
+                <div className="map-filter__section">
+                  <p className="map-filter__label">Deity</p>
+                  <Dropdown value={selDeity} options={deityOptions} open={deityOpen} setOpen={setDeityOpen} onSelect={setSelDeity} />
+                </div>
+                <div className="map-filter__section">
+                  <p className="map-filter__label">Popular Filters</p>
+                  <div className="map-filter__popular">
+                    {popularFilters.map((f) => (
+                      <button key={f.label} className={`map-filter__popular-btn ${activeFilters.includes(f.label) ? "active" : ""}`}
+                        style={{ "--accent": f.color }} onClick={() => togglePopularFilter(f.label)}>
+                        <span>{f.icon}</span>{f.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="map-page__drawer-footer">
+                <button className="map-page__drawer-apply" onClick={() => setFilterOpen(false)}>
+                  Apply Filters ({filtered.length} temples)
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }

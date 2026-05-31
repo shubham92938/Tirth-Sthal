@@ -44,3 +44,28 @@
   padding-right: 48px;
   border-right: 1px solid #f0ede8;
 }
+
+@media (max-width: 768px) {
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    gap: 0;
+  }
+  .stat__item {
+    padding: 20px 16px;
+    border-right: none;
+    border-bottom: 1px solid #f0ede8;
+    gap: 12px;
+  }
+  .stat__item:nth-child(odd) {
+    border-right: 1px solid #f0ede8;
+  }
+  .stat__item:last-child,
+  .stat__item:nth-last-child(2):nth-child(odd) {
+    border-bottom: none;
+  }
+  .stat__icon { font-size: 28px; }
+  .stat__value { font-size: 22px; }
+  .stat__label { font-size: 12px; }
+}

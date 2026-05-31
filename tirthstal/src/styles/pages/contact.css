@@ -392,3 +392,73 @@
   background: #c8610a;
   color: #fff;
 }
+/* ══════════════════════════════════════════
+   RESPONSIVE — CONTACT PAGE
+══════════════════════════════════════════ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .contact-page { padding: 20px 24px 48px; }
+  .contact-page__body { grid-template-columns: 1fr 280px; gap: 20px; }
+  .contact-page__title { font-size: 32px; }
+  .contact-form { padding: 24px; }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .contact-page { padding: 16px 16px 40px; }
+
+  /* Header — hide decorative image, stack cleanly */
+  .contact-page__header {
+    min-height: unset;
+    margin-bottom: 24px;
+    overflow: visible;
+  }
+  .contact-page__header-img { display: none; }
+  .contact-page__header-left { max-width: 100%; }
+  .contact-page__title { font-size: 26px; margin-bottom: 10px; }
+  .contact-page__sub { font-size: 13.5px; }
+
+  /* Body — single column */
+  .contact-page__body { grid-template-columns: 1fr; gap: 20px; }
+
+  /* Form */
+  .contact-form { padding: 20px 16px; border-radius: 14px; }
+
+  /* Name + Email — stack to single column */
+  .contact-form__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  /* Bottom row — stack captcha above submit */
+  .contact-form__bottom {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .contact-form__captcha { width: 100%; }
+  .contact-form__submit {
+    width: 100%;
+    justify-content: center;
+    padding: 13px;
+    font-size: 15px;
+  }
+
+  /* Sidebar shown below form */
+  .contact-sidebar { gap: 14px; }
+  .contact-sidebar__card { padding: 16px; }
+}
+
+/* ── Small Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .contact-page { padding: 12px 12px 36px; }
+  .contact-page__title { font-size: 22px; }
+  .contact-form { padding: 16px 14px; }
+  .contact-form__title { font-size: 16px; }
+
+  /* Captcha shrink */
+  .contact-form__captcha { padding: 10px 12px; gap: 8px; }
+  .captcha__label { font-size: 12.5px; }
+}

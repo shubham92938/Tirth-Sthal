@@ -92,16 +92,15 @@ export default function Festivals() {
 
       {/* ── Hero Header ── */}
       <div className="fest-page__hero">
+          <img src="/images/hero-temples.jpeg" class="dist-main__hero-bg" alt="Festivals"
+            onError={(e) => e.target.style.display = "none"} />
+            <div className="dist-main__hero-overlay" />
         <div className="fest-page__hero-left">
           <h1 className="fest-page__title">Festivals</h1>
           <p className="fest-page__sub">
             Celebrating devotion, culture and traditions.<br />
             Explore festivals at temples across India.
           </p>
-        </div>
-        <div className="fest-page__hero-img">
-          <img src="/images/festivals-hero.png" alt="Festivals"
-            onError={(e) => e.target.style.display = "none"} />
         </div>
       </div>
 

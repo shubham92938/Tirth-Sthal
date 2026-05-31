@@ -147,6 +147,16 @@
   object-fit: cover;
   border-radius: 12px;
   flex-shrink: 0;
+  /* Hide broken image gracefully */
+  min-width: 0;
+}
+/* When image fails (display:none set by onError), collapse gap */
+.about-story__img[style*="display: none"] {
+  display: none !important;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
 }
 .about-story__content {
   display: flex;
@@ -237,6 +247,10 @@
   border-top: 1px solid #f0ede8;
   padding: 36px 48px;
   margin: 48px -40px 0;
+  /* Prevent overflow bleed */
+  width: calc(100% + 80px);
+  max-width: calc(100% + 80px);
+  box-sizing: border-box;
 }
 .about-stat { display: flex; align-items: center; gap: 16px; }
 .about-stat__icon { font-size: 32px; }
@@ -247,3 +261,113 @@
   line-height: 1;
 }
 .about-stat__label { font-size: 13px; color: #888; margin-top: 3px; }
+/* ══════════════════════════════════════════
+   RESPONSIVE — ABOUT PAGE
+══════════════════════════════════════════ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .about-page { padding: 24px 24px 0; }
+
+  .about-page__hero { padding: 36px 36px; }
+  .about-page__title { font-size: 34px; }
+
+  .about-page__body { grid-template-columns: 1fr 260px; gap: 28px; }
+
+  .about-mission__grid { grid-template-columns: repeat(2, 1fr); }
+
+  .about-stats { padding: 28px 24px; margin: 40px -24px 0; }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .about-page { padding: 16px 16px 0; }
+
+  /* Hero — stack vertically */
+  .about-page__hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 20px;
+    min-height: unset;
+    margin-bottom: 32px;
+  }
+  .about-page__hero-left { max-width: 100%; }
+  .about-page__hero-img { display: none; }
+  .about-page__title { font-size: 26px; margin-bottom: 10px; }
+  .about-page__subtitle { font-size: 14px; }
+
+  /* Body — single column */
+  .about-page__body { grid-template-columns: 1fr; gap: 0; }
+
+  /* Sidebar unstick, show inline after main content */
+  .about-page__sidebar {
+    position: static;
+    margin-top: 8px;
+    margin-bottom: 32px;
+  }
+
+  /* Mission grid — 2 columns */
+  .about-mission__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .about-mission__card { padding: 18px 12px; }
+  .about-mission__icon { width: 52px; height: 52px; font-size: 26px; }
+  .about-mission__name { font-size: 13px; }
+  .about-mission__desc { font-size: 12px; }
+
+  /* Story — stack vertically, hide broken image placeholder */
+  .about-story { flex-direction: column; gap: 16px; }
+  .about-story__img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+  }
+  /* Hide img element entirely if it fails to load */
+  .about-story__img[style*="display: none"] + .about-story__content,
+  .about-story:not(:has(img[style])) .about-story__img { display: none; }
+
+  /* Stats bar — 2×2 grid, remove negative margin */
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    margin: 32px -16px 0;
+  }
+  .about-stat {
+    padding: 24px 16px;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .about-stat:nth-child(odd)  { border-right: 1px solid #f0ede8; }
+  .about-stat:nth-child(3),
+  .about-stat:nth-child(4)    { border-bottom: none; }
+
+  .about-stat__icon { font-size: 24px; }
+  .about-stat__num  { font-size: 22px; }
+  .about-stat__label{ font-size: 12px; }
+
+  /* Section */
+  .about-section { margin-bottom: 32px; }
+  .about-section__title { font-size: 20px; }
+  .about-section__desc  { font-size: 14px; max-width: 100%; }
+
+  /* Sidebar boxes */
+  .about-sidebar__box { padding: 16px; }
+  .about-values__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── Small Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .about-page { padding: 12px 12px 0; }
+
+  .about-page__hero { padding: 20px 16px; border-radius: 12px; margin-bottom: 24px; }
+  .about-page__title { font-size: 22px; }
+
+  .about-mission__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  .about-story__img { height: 150px; }
+
+  .about-stats { margin: 24px -12px 0; }
+  .about-stat  { padding: 20px 12px; }
+  .about-stat__num { font-size: 20px; }
+
+  .about-section__title { font-size: 18px; }
+}

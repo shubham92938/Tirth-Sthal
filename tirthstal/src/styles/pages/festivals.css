@@ -29,15 +29,29 @@
   overflow: hidden;
   position: relative;
 }
+
+.fest-page__hero-left{
+  position: relative;
+  z-index: 99;
+  padding: 40px 48px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  max-width: 580px;
+}
 .fest-page__title {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 10px;
+  color: #c8610a;
+  line-height: 1.2;
+  margin: 0;
+  z-index: 999;
 }
 .fest-page__sub {
   font-size: 15px;
-  color: #666;
+  color: #cdcccc;
   line-height: 1.7;
 }
 .fest-page__hero-img {
@@ -453,3 +467,29 @@
 .fest-sidebar__guide-name  { font-size: 13.5px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
 .fest-sidebar__guide-sub   { font-size: 12px; color: #888; }
 .fest-sidebar__guide-arrow { color: #ccc; margin-left: auto; flex-shrink: 0; }
+
+
+
+.dist-main__hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+
+.dist-main__hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(20, 8, 0, 0.85) 0%,
+    rgba(20, 8, 0, 0.65) 35%,
+    rgba(20, 8, 0, 0.25) 65%,
+    rgba(20, 8, 0, 0.0) 100%
+  );
+}

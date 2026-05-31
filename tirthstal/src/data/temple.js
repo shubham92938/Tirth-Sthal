@@ -1,6 +1,39 @@
 import { templeImages } from "./templeImages";
 
 export const templesData = {
+  
+  "Maharastra":{
+        "Pune": [
+      {
+        id: 101,
+        name: "Dagdusheth Halwai Ganpati Temple",
+        slug: "dagdusheth-halwai-ganpati",
+        deity: "Lord Ganesh",
+        deityColor: "#10b981",
+        type: "Swayambhu Temple",
+        address: "Budhwar Peth, Pune",
+        district: "Pune",
+        state: "Maharashtra",
+        description: "One of the most famous Ganesh temples in Pune, the Dagdusheth Halwai Ganpati is visited by millions of devotees every year including celebrities and politicians.",
+        history: "The temple was built in the late 19th century by Seth Dagdusheth Halwai, a famous sweet merchant of Pune, in memory of his son who died of plague. The idol is adorned with gold and precious jewels.",
+        timings: { morning: "6:00 AM - 12:00 PM", evening: "4:00 PM - 11:00 PM" },
+        aartiTimings: { morningAarti: "6:00 AM", madhyahnaAarti: "12:00 PM", eveningAarti: "8:00 PM" },
+        festivals: ["Ganesh Chaturthi", "Sankashti Chaturthi", "Diwali"],
+        images: [
+          "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800",
+          "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+        ],
+        coordinates: { lat: 18.5158, lng: 73.8563 },
+        rating: 4.9,
+        reviews: 18420,
+        facilities: ["Parking", "VIP Darshan", "Prasad", "Wheelchair Access", "Locker"],
+        nearbyTemples: ["Kasba Ganpati Temple", "Tambdi Jogeshwari Temple"],
+        officialWebsite: "https://dagdushethganpati.com",
+  },],},
+
+
+
+
   "Madhya Pradesh": {
 
     "Ujjain": [

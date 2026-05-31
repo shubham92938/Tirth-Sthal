@@ -47,7 +47,16 @@
   z-index: 2;
 }
 .tcard__fav:hover { transform: scale(1.1); }
-.tcard__fav.active { color: #e53e3e; }
+.tcard__fav.active { color: #e53e3e;  }
+.tcard__fav.active {
+  color: #e53e3e;
+  background: #fff;
+}
+
+.tcard__fav.active svg {
+  fill: #e53e3e;
+  stroke: #e53e3e;
+}
 
 /* Type Badge */
 .tcard__type {
