@@ -51,6 +51,7 @@ export default function Profile() {
   };
 
   const userInitial = user?.name?.charAt(0).toUpperCase() || "U";
+  const save = localStorage.setItem(form.name , form.email , form.bio)
 
   return (
     <div className="profile-page">
@@ -403,7 +404,7 @@ export default function Profile() {
                   <h4>🔑 Change Password</h4>
                   <div className="profile-form__field">
                     <label>Current Password</label>
-                    <input type="password" placeholder="Enter current password" />
+                    <input type="password" placeholder="Enter current password"/>
                   </div>
                   <div className="profile-form__field">
                     <label>New Password</label>

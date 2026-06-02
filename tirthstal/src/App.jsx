@@ -18,6 +18,8 @@ import Contact from "./pages/contact/Contact";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 import Profile from "./pages/auth/myprofile"
+import ForgotPassword from "./pages/auth/forgotPassword";
+import ResetPassword  from "./pages/auth/reset-password";
 export default function App() {
   return (
     <Router>
@@ -39,6 +41,8 @@ export default function App() {
            <Route path="/auth/login"       element={<Login />}      />
         <Route path="/auth/signup"         element={<Signup />}       />
         <Route path="/profile"             element={<Profile/>}    />
+        <Route path="/auth/forgot"                    element={<ForgotPassword />} />
+        <Route path="/auth/reset-password/:token"     element={<ResetPassword />}  /> 
       </Routes>
       <Footer />
     </Router>

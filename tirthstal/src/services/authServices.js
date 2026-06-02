@@ -23,6 +23,10 @@ export const login = async (email, password) => {
   return data;
 };
 
+export const checkEmail = async (email)=>{
+  const response = await API.post("/auth/check-email")
+}
+
 // ── Logout ──
 export const logout = async () => {
   try {
@@ -50,6 +54,18 @@ export const updateProfile = async (updates) => {
 export const getCurrentUser = () => {
   const user = localStorage.getItem("tirthstal_user");
   return user ? JSON.parse(user) : null;
+};
+
+// Forgot Password
+export const forgotPasswordAPI = async (email) => {
+  const { data } = await API.post("/auth/forgot-password", { email });
+  return data;
+};
+
+// Reset Password
+export const resetPasswordAPI = async (token, password) => {
+  const { data } = await API.post(`/auth/reset-password/${token}`, { password });
+  return data;
 };
 
 export const isAuthenticated = () => !!localStorage.getItem("tirthstal_token");

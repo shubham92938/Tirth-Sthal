@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #000000;
+}
+
+
+.link {
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: -1px -2px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+ 
+
+ 
+.sidebar.close {
+  width: 70px;
+}
+
+ 
+.sidebar.close .sidebar__logo h1,
+.sidebar.close .sidebar__menu li span,
+.sidebar.close .user-account h1,
+.sidebar.close .user-account h3 {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, width 0.3s ease;
+}
+
+.sidebar.open .sidebar__logo h1,
+.sidebar.open .sidebar__menu li span,
+.sidebar.open .user-account h1,
+.sidebar.open .user-account h3 {
+  opacity: 1;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.sidebar_top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  
+  padding: 12px 4px 0 4px;
+  margin-bottom: 20px;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo__icon {
+  width: 35px;
+  height: 35px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.logo__icon img{
+  width: 50px;
+  object-fit: cover;
+  height: 50px;
+}
+
+.sidebar__logo h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffa26f;
+  white-space: nowrap;
+}
+
+#black{
+  color: rgb(252, 252, 252);
+}
+
+.sidebar__menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#alert-black {
+  color: black;
+}
+
+.sidebar__menu li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.active{
+  text-decoration: none;
+}
+.sidebar__menu li:hover {
+  background: #1a1a1a;
+}
+.sidebar__menu li:hover .link {
+  color: #c296ff;
+}
+.sidebar__menu li:hover .link svg {
+  stroke: #c296ff;
+}
+ 
+
+.sidebar__menu li svg {
+  stroke-width: 2.2;
+  flex-shrink: 0;
+}
+
+.sidebar__menu li.active {
+  background: #1a1a1a;
+}
+
+.sidebar__menu li.active .link {
+  color: #c296ff;
+}
+
+.sidebar__menu li.active .link svg {
+  stroke: #c296ff;
+}
+.user-account {
+  margin-top: 375px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid rgb(53, 247, 156);
+  border-radius: 8px;
+   box-shadow: 0 4px 16px rgba(255, 29, 29, 0.07);
+  padding: 0 8px;
+  overflow: hidden;
+  cursor: pointer; 
+}
+.user-account:hover {
+  background: #2d2c2c;
+ transition :all 0.3s ease;
+ border-bottom: 1px solid rgb(53, 247, 156);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(134, 255, 183, 0.07);
+  color: #c296ff;
+}
+
+
+.badgeicon {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeicon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#fresh {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+#owner {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.close-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+span {
+  cursor: pointer;
+  text-decoration: none;
+  
+}
+
+
+
+
+/* Make sidebar a flex column so user-account sits at bottom */
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background: rgb(0, 0, 0);
+  border-bottom: 1px solid #83a5e7;
+  border-right: 1px solid #83a5e7;
+  padding: 12px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;           /* ADD */
+  flex-direction: column;  /* ADD */
+}
+
+/* Remove the hardcoded margin-top and fix the user-account */
+.user-account {
+  margin-top: auto;        /* REPLACES margin-top: 375px */
+  width: 100%;
+  height: 60px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(255, 29, 29, 0.07);
+  padding: 0 8px;
+  overflow: hidden;
+  flex-shrink: 0;          /* ADD — prevents it from squishing */
+}
+
+/* Fix text colors so they're visible on dark bg */
+#fresh {
+  font-size: 14px;
+  white-space: nowrap;
+  color: #ffffff;          /* ADD */
+}
+
+#owner {
+  font-size: 10px;
+  white-space: nowrap;
+  color: #9ca3af;          /* ADD — muted gray */
+}
+
+/* Hide text when sidebar is closed */
+.sidebar.close #fresh,
+.sidebar.close #owner {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease, width 0.3s ease;
+}

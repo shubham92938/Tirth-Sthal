@@ -1,0 +1,135 @@
+.navbar {
+  height: 60px;
+background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* ✅ Match layout constraints when the sidebar sits open */
+.navbar.sidebar-open {
+  left: 200px;
+  width: calc(100% - 200px);
+}
+
+/* ✅ Match layout constraints when the sidebar breaks down to 70px */
+.navbar.sidebar-closed {
+  left: 70px;
+  width: calc(100% - 70px);
+}
+.navbar_left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-btn {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  border: none;
+  background: transparent;
+  display: flex;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-btn:hover {
+  background: #f3f4f6;
+}
+
+#dashboard {
+  color: #2c2e31;
+  text-align: center;
+}
+
+/* ✅ FIXED: removed hardcoded margin-left: 250px */
+.search-box {
+  width: 50vw;
+  height: 35px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content:center ;
+  gap: 10px;
+  /* border: 1px solid black; */
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+}
+
+.navbar_right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.notification {
+  width: 42px;
+  height: 42px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #e5e7eb;
+}
+
+.profile-info h4 {
+  font-size: 15px;
+  color: #111827;
+}
+
+.profile-info p {
+  font-size: 13px;
+  color: #6b7280;
+}

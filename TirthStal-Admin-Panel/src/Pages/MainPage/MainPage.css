@@ -1,0 +1,25 @@
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7fb;
+}
+
+/* PAGE CONTENT AREA */
+.page-content {
+  flex: 1;
+  padding: 24px;
+  margin-top: 60px;
+  transition: all 0.3s ease;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* WHEN SIDEBAR OPEN */
+.main-layout.open .page-content {
+  margin-left: 200px;
+}
+
+/* WHEN SIDEBAR CLOSED */
+.main-layout.close .page-content {
+  margin-left: 70px;
+}

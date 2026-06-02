@@ -1,0 +1,16 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'jetBrainsMono', monospace;
+}
+
+body {
+    font-family: 'jetBrainsMono';
+   scroll-behavior: smooth;
+   /* ✅ SAFETY NET: Stops any rogue element from creating a horizontal scroll */
+   overflow-x: hidden; 
+   background-color: #DCD9D4;
+ background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+ background-blend-mode: soft-light,screen;;
+}

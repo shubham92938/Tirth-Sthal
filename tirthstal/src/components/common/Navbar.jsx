@@ -30,7 +30,7 @@ export default function Navbar() {
 
   const [langOpen,    setLangOpen]    = useState(false);
   const [activeLang,  setActiveLang]  = useState("English");
-  const [userMenuOpen,setUserMenuOpen]= useState(true);
+  const [userMenuOpen,setUserMenuOpen]= useState(false);
   const userMenuRef                   = useRef(null);
 
   // Click outside pe user menu band karo
