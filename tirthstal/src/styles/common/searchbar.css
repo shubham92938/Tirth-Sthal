@@ -190,3 +190,27 @@
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
 }
+
+
+/* ── SEARCHBAR RESPONSIVE ── */
+@media (max-width: 768px) {
+  .smartsearch {
+    max-width: 100%;
+    width: 100%;
+  }
+  .smartsearch__btn {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+  .smartsearch__input { font-size: 13px; padding: 12px 8px; }
+  .smartsearch__dropdown { max-height: 320px; }
+}
+
+@media (max-width: 480px) {
+  .smartsearch__btn span { display: none; }
+  .smartsearch__btn { padding: 11px 12px; border-radius: 0 8px 8px 0; }
+  .smartsearch__item { padding: 9px 12px; gap: 8px; }
+  .smartsearch__item-icon { width: 30px; height: 30px; font-size: 14px; }
+  .smartsearch__item-label { font-size: 13px; }
+  .smartsearch__item-sub   { font-size: 11px; }
+}
