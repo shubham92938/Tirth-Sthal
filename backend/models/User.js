@@ -31,7 +31,6 @@ const UserSchema = new mongoose.Schema({
     enum:    ["user", "admin"],
     default: "user",
   },
-
   language: {
     type:    String,
     enum:    ["en", "hi", "mr", "gu"],
@@ -41,51 +40,32 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref:  "Temple",
   }],
-  name:{ String,
-      email:{
-        type:String,
-        unique:true,
-      },
-    password:String,
-  },
   isVerified: {
     type:    Boolean,
     default: false,
   },
-  resetPasswordToken:   String,
-  resetPasswordExpire:  Date,
+  resetPasswordToken:  String,
+  resetPasswordExpire: Date,
 }, { timestamps: true });
-module.exports = mongoose.model('User',UserSchema)
 
-
- 
+// ── Hooks & Methods BEFORE module.exports ──
 
 UserSchema.pre("save", async function () {
-  if (!this.isModified("password")) {
-    return;
-  }
-
+  if (!this.isModified("password")) return;
   this.password = await bcrypt.hash(this.password, 10);
 });
 
-
 UserSchema.methods.getJwtToken = function () {
   return jwt.sign(
-    { id: this._id, role: this.role , email: this.email},
+    { id: this._id, role: this.role, email: this.email },
     process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRE }
   );
 };
 
-
-
-
- 
 UserSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(
-    enteredPassword,
-    this.password
-  );
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 
+// ── Single export at the bottom ──
 module.exports = mongoose.model("User", UserSchema);

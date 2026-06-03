@@ -24,6 +24,7 @@
   gap: 6px;
   padding: 20px 0;
   font-size: 13px;
+  flex-wrap: wrap;
 }
 .breadcrumb__item {
   display: flex;
@@ -32,6 +33,7 @@
   color: #888;
   text-decoration: none;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 .breadcrumb__item:hover        { color: #c8610a; }
 .breadcrumb__item--active      { color: #1a1a1a; font-weight: 500; }
@@ -61,6 +63,7 @@
   right: 20px;
   display: flex;
   gap: 10px;
+  z-index: 2;
 }
 .temple-detail__fav-btn,
 .temple-detail__share-btn {
@@ -94,6 +97,7 @@
   position: absolute;
   bottom: 20px;
   left: 20px;
+  z-index: 2;
 }
 .temple-detail__deity-tag {
   padding: 5px 14px;
@@ -107,6 +111,7 @@
   right: 20px;
   display: flex;
   gap: 8px;
+  z-index: 2;
 }
 .temple-detail__thumb {
   width: 60px;
@@ -161,7 +166,11 @@
   gap: 4px;
   border-bottom: 2px solid #f0ede8;
   margin-bottom: 28px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.temple-detail__tabs::-webkit-scrollbar { display: none; }
 .temple-detail__tab {
   padding: 10px 20px;
   font-size: 14px;
@@ -174,6 +183,8 @@
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .temple-detail__tab:hover  { color: #c8610a; }
 .temple-detail__tab.active { color: #c8610a; border-bottom-color: #c8610a; font-weight: 600; }
@@ -409,3 +420,182 @@
 .sidebar-card__info-list li:last-child { border-bottom: none; }
 .info-list__label { color: #888; }
 .info-list__value { color: #1a1a1a; font-weight: 600; }
+
+/* ── TABLET (≤ 900px) ── */
+@media (max-width: 900px) {
+  .temple-detail {
+    padding: 0 24px 48px;
+  }
+  .temple-detail__hero {
+    height: 340px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  .temple-detail__body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .temple-detail__sidebar {
+    position: static;
+    top: auto;
+    /* Show sidebar cards side-by-side on tablet */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .temple-detail__info-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .temple-detail__gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .temple-detail__title {
+    font-size: 24px;
+  }
+}
+
+/* ── MOBILE (≤ 600px) ── */
+@media (max-width: 600px) {
+  .temple-detail {
+    padding: 0 16px 40px;
+  }
+
+  /* Hero */
+  .temple-detail__hero {
+    height: 240px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .temple-detail__hero-actions {
+    top: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+  .temple-detail__fav-btn,
+  .temple-detail__share-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .temple-detail__thumbnails {
+    bottom: 12px;
+    right: 12px;
+    gap: 6px;
+  }
+  .temple-detail__thumb {
+    width: 48px;
+    height: 36px;
+  }
+  .temple-detail__hero-badge {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  /* Title & Meta */
+  .temple-detail__title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .temple-detail__meta {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .temple-detail__location,
+  .temple-detail__timing,
+  .temple-detail__rating {
+    font-size: 12.5px;
+  }
+
+  /* Tabs */
+  .temple-detail__tabs {
+    gap: 0;
+    margin-bottom: 20px;
+  }
+  .temple-detail__tab {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* Info Cards — 2 columns on mobile */
+  .temple-detail__info-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .temple-detail__info-card {
+    padding: 12px 8px;
+  }
+
+  /* Gallery — 1 column on mobile */
+  .temple-detail__gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .temple-detail__gallery-img {
+    height: 200px;
+  }
+
+  /* Location */
+  .temple-detail__map-placeholder {
+    height: 180px;
+  }
+
+  /* Festivals */
+  .temple-detail__festival-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .festival-card__month {
+    align-self: flex-start;
+  }
+
+  /* Nearby */
+  .temple-detail__nearby-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Sidebar — full width, stacked */
+  .temple-detail__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: static;
+  }
+  .temple-detail__sidebar-card {
+    padding: 16px;
+  }
+
+  /* Body */
+  .temple-detail__body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Breadcrumb */
+  .temple-detail__breadcrumb {
+    padding: 14px 0;
+    font-size: 12px;
+  }
+}
+
+/* ── SMALL MOBILE (≤ 360px) ── */
+@media (max-width: 360px) {
+  .temple-detail {
+    padding: 0 12px 32px;
+  }
+  .temple-detail__hero {
+    height: 200px;
+  }
+  .temple-detail__tab {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .temple-detail__info-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .temple-detail__fav-btn,
+  .temple-detail__share-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}

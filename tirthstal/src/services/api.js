@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3300/api",
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000/api",
   withCredentials: true,
 });
 
@@ -24,7 +24,7 @@ API.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem("tirthstal_token");
       localStorage.removeItem("tirthstal_user");
-      window.location.href = "/login";
+      window.location.href = "/auth/login";
     }
     return Promise.reject(error);
   }

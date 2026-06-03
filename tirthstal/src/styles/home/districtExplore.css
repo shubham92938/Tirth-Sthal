@@ -143,3 +143,24 @@
   background: #c8610a;
   color: #fff;
 }
+/* ── DISTRICT EXPLORE RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .district { padding: 32px 24px; }
+  .district__grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+  .district { padding: 24px 16px; }
+  .district__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .district__img-wrap { height: 140px; }
+  .district__name  { font-size: 13px; }
+  .district__count { font-size: 11px; padding: 2px 8px; }
+}
+
+@media (max-width: 480px) {
+  .district { padding: 20px 12px; }
+  .district__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .district__img-wrap { height: 120px; }
+  .district__name  { font-size: 12px; }
+  .district__count { font-size: 10px; padding: 1px 6px; }
+}
