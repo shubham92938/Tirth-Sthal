@@ -1,6 +1,5 @@
 const Blog = require("../models/Blog");
 
-
 // ── सभी Blogs ──
 exports.getAllBlogs = async (req, res, next) => {
   try {
@@ -115,51 +114,6 @@ exports.getCategories = async (req, res, next) => {
   try {
     const categories = await Blog.distinct("category", { isPublished: true });
     res.status(200).json({ success: true, categories });
-  } catch (error) {
-    next(error);
-  }
-};
-
-
-// const { OAuth2Client } = require("google-auth-library");
-// const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
-// ── Google Login ──
-exports.googleLogin = async (req, res, next) => {
-  try {
-    const { credential } = req.body;
-
-    // Verify Google token
-    const ticket = await googleClient.verifyIdToken({
-      idToken:  credential,
-      audience: process.env.GOOGLE_CLIENT_ID,
-    });
-
-    const { name, email, picture, sub: googleId } = ticket.getPayload();
-
-    // Check if user exists
-    let user = await User.findOne({ email });
-
-    if (!user) {
-      // New user — register automatically
-      user = await User.create({
-        name,
-        email,
-        password:  googleId + process.env.JWT_SECRET,
-        avatar:    picture,
-        googleId,
-        role:      email === process.env.ADMIN_EMAIL ? "admin" : "user",
-      });
-    }
-
-    // If existing user — make sure admin email always has admin role
-    if (email === process.env.ADMIN_EMAIL && user.role !== "admin") {
-      user.role = "admin";
-      await user.save();
-    }
-
-    sendToken(user, 200, res);
-
   } catch (error) {
     next(error);
   }

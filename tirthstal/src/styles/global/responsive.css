@@ -1,37 +1,111 @@
 /* ============================================
-   TIRTHSTAL — GLOBAL RESPONSIVE
-   All class names verified against actual JSX
+   TIRTHSTAL — GLOBAL RESPONSIVE STYLES
+   Breakpoints: 1024px | 768px | 480px
+  
+  
    ============================================ */
 
-/* ── STATS ── */
-/* Stats responsive is handled in stats.css — no conflict here */
 
-/* ── BROWSE BY DEITY ── */
-/* Deity responsive is handled in browseByDeity.css — no conflict here */
 
-/* ── POPULAR TEMPLES ── */
-/* Popular responsive is handled in popularTemples.css — no conflict here */
 
-/* ── DISTRICT EXPLORE ── */
-/* District responsive is handled in districtExplore.css — no conflict here */
 
-/* ── TEMPLES LISTING PAGE ── */
+
+
+/* ── HOME PAGE ── */
+@media (max-width: 1024px) {
+  .hero { height: auto; min-height: 420px; }
+  .hero__content { padding: 40px 32px; max-width: 500px; }
+  .hero__heading { font-size: 32px; }
+
+  .stats { padding: 20px 24px; gap: 16px; }
+  .stat__num { font-size: 20px; }
+
+  .browse-deity__grid { grid-template-columns: repeat(6, 1fr); }
+  .popular__grid { gap: 14px; }
+  .district__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  /* Hero */
+  .hero { height: auto; min-height: unset; }
+  .hero__content { padding: 32px 20px; max-width: 100%; }
+  .hero__heading { font-size: 26px; }
+  .hero__sub { font-size: 13px; }
+  .hero__bg { object-position: 70% center; }
+  .hero__overlay {
+    background: linear-gradient(
+      to right,
+      rgba(253,248,242,0.98) 0%,
+      rgba(253,248,242,0.95) 60%,
+      rgba(253,248,242,0.7) 100%
+    );
+  }
+  .hero__search { flex-wrap: wrap; border-radius: 10px; }
+  .hero__state  { min-width: 100%; border-right: none; border-bottom: 1px solid #e5ddd5; }
+  .hero__search-divider { display: none; }
+  .hero__search-input-wrap { padding: 8px 12px; }
+  .hero__search-btn { border-radius: 0 0 8px 8px; width: 100%; justify-content: center; padding: 12px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; }
+  .stat { padding: 20px 16px; border-bottom: 1px solid #f0ede8; }
+  .stat:nth-child(odd) { border-right: 1px solid #f0ede8; }
+  .stat__divider { display: none; }
+
+  /* Browse by Deity */
+  .browse-deity { padding: 24px 16px; }
+  .browse-deity__grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .deity-card { padding: 12px 6px; }
+  .deity-card__icon { font-size: 24px; }
+  .deity-card__name { font-size: 11px; }
+
+  /* Popular Temples */
+  .popular { padding: 0 16px 24px; }
+  .popular__grid { gap: 12px; }
+
+  /* District Explore */
+  .district-explore { padding: 0 16px 24px; }
+  .district__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .hero__content { padding: 24px 16px 32px; }
+  .hero__heading { font-size: 22px; }
+  .hero__badge   { font-size: 11px; padding: 5px 12px; }
+
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat__num { font-size: 18px; }
+
+  .browse-deity__grid { grid-template-columns: repeat(4, 1fr); }
+  .district__grid     { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── TEMPLES PAGE ── */
 @media (max-width: 1024px) {
   .temples-page { padding: 20px 24px 40px; }
   .temples-page__grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 }
+
 @media (max-width: 768px) {
   .temples-page { padding: 16px 16px 40px; }
+  .temples-page__body { flex-direction: column; gap: 0; }
+
+  /* Filters become top bar on mobile */
+  .temples-page__filters {
+    position: sticky; top: 60px; z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid #f0ede8;
+    padding: 12px 16px;
+    margin: 0 -16px 16px;
+  }
+  .temples-page__filters-inner { display: flex; flex-direction: column; gap: 12px; }
   .temples-page__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .temples-page__header { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .temples-page__meta   { width: 100%; justify-content: space-between; }
-  .temples-page__title  { font-size: 22px; }
+  .temples-page__header { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
 @media (max-width: 480px) {
-  .temples-page { padding: 14px 12px 40px; }
-  .temples-page__grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+  .temples-page__grid { grid-template-columns: repeat(1, 1fr)!important; gap: 10px; }
   .tcard__name { font-size: 13px; }
-  .tcard__img-wrap { height: 140px; }
 }
 
 /* ── TEMPLE DETAIL PAGE ── */
@@ -40,54 +114,110 @@
   .temple-detail__body { grid-template-columns: 1fr 260px; gap: 24px; }
   .temple-detail__info-cards { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 768px) {
   .temple-detail { padding: 0 16px 40px; }
-  .temple-detail__hero   { height: 260px; border-radius: 12px; }
-  .temple-detail__body   { grid-template-columns: 1fr; }
+  .temple-detail__hero { height: 260px; border-radius: 12px; }
+  .temple-detail__body { grid-template-columns: 1fr; }
   .temple-detail__sidebar { position: static; }
-  .temple-detail__info-cards { grid-template-columns: repeat(2, 1fr); }
-  .temple-detail__gallery    { grid-template-columns: repeat(2, 1fr); }
+  .temple-detail__info-cards { grid-template-columns: repeat(1, 1fr); }
+  .temple-detail__gallery { grid-template-columns: repeat(1, 1fr); }
   .temple-detail__nearby-grid { grid-template-columns: 1fr; }
-  .temple-detail__tabs { overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .temple-detail__tabs { overflow-x: auto; scrollbar-width: none; }
   .temple-detail__tabs::-webkit-scrollbar { display: none; }
-  .temple-detail__tab { padding: 8px 14px; font-size: 13px; }
 }
+
 @media (max-width: 480px) {
-  .temple-detail { padding: 0 12px 32px; }
-  .temple-detail__hero  { height: 220px; border-radius: 10px; }
-  .temple-detail__title { font-size: 20px; }
-  .temple-detail__info-cards { grid-template-columns: repeat(2, 1fr); }
+  .temple-detail__title { font-size: 22px; }
+  .temple-detail__hero  { height: 220px; }
+  .temple-detail__info-cards { grid-template-columns: repeat(1, 1fr); }
 }
 
 /* ── DISTRICTS PAGE ── */
 @media (max-width: 1024px) {
-  .dist-page__layout { grid-template-columns: 220px 1fr; }
-  .dist-main  { padding: 20px 24px 40px; }
-  .dist-grid  { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .dist-page__layout { grid-template-columns: 240px 1fr; }
+  .dist-main { padding: 20px 24px 40px; }
+  .dist-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .dist-main__stats-left { gap: 16px; }
   .dist-main__title { font-size: 24px; }
 }
+
 @media (max-width: 768px) {
+  /* Layout — full width, sidebar hidden */
   .dist-page__layout { grid-template-columns: 1fr; }
   .dist-sidebar { display: none; }
-  .dist-main    { padding: 16px 16px 40px; }
-  .dist-main__hero { min-height: unset; padding: 24px 20px; }
-  .dist-main__title { font-size: 20px; }
-  .dist-main__desc  { font-size: 13px; }
-  .dist-main__stats { flex-wrap: wrap; gap: 12px; padding: 14px 16px; }
-  .dist-main__stats-left { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+
+  /* Main content */
+  .dist-main { padding: 16px 16px 40px; }
+
+  /* Hero */
+  .dist-main__hero { height: 220px; border-radius: 12px; }
+  .dist-main__hero-content { padding: 24px 20px; max-width: 100%; gap: 8px; }
+  .dist-main__title { font-size: 20px; font-weight: 700; }
+  .dist-main__desc { font-size: 13px; max-width: 100%; }
+  .hero-pill { font-size: 11.5px; padding: 4px 11px; }
+
+  /* Stats — 2×2 grid */
+  .dist-main__stats {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+  }
+  .dist-main__stats-left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 16px;
+    width: 100%;
+  }
   .dist-stat__divider { display: none; }
+  .dist-stat__num { font-size: 18px; }
+  .dist-stat__label { font-size: 11.5px; }
+
+  /* Sort full width */
   .dist-main__sort { width: 100%; justify-content: space-between; }
+
+  /* Temple grid — 2 columns */
   .dist-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .dist-card__img-wrap { height: 140px; }
-  .dist-main__breadcrumb { font-size: 12px; flex-wrap: wrap; }
+
+  /* Breadcrumb */
+  .dist-main__breadcrumb { font-size: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 }
+
 @media (max-width: 480px) {
-  .dist-main { padding: 12px 12px 32px; }
+  .dist-main { padding: 12px 12px 40px; }
+
+  /* Hero */
+  .dist-main__hero { height: 200px; border-radius: 10px; }
+  .dist-main__hero-content { padding: 20px 16px; }
+  .dist-main__title { font-size: 17px; }
+  .dist-main__desc {
+    font-size: 12.5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .hero-pill { font-size: 11px; padding: 3px 9px; }
+
+  /* Stats */
+  .dist-main__stats { padding: 14px 12px; }
+  .dist-main__stats-left { gap: 10px; }
+  .dist-stat__icon { font-size: 18px; }
+  .dist-stat__num { font-size: 16px; }
+  .dist-stat__label { font-size: 11px; }
+
+  /* Temple grid */
   .dist-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .dist-card__img-wrap { height: 125px; }
+  .dist-card__img-wrap { height: 130px; }
   .dist-card__name { font-size: 12.5px; }
+  .dist-card__info { padding: 10px; gap: 5px; }
+
+  /* Pagination */
+  .dist-pagination { flex-wrap: wrap; gap: 4px; }
   .dist-pagination__btn,
-  .dist-pagination__arrow { width: 34px; height: 34px; font-size: 12px; }
+  .dist-pagination__arrow { width: 34px; height: 34px; font-size: 12.5px; }
 }
 
 /* ── FESTIVALS PAGE ── */
@@ -96,166 +226,45 @@
   .fest-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .fest-page__body { grid-template-columns: 1fr 260px; gap: 24px; }
 }
+
 @media (max-width: 768px) {
   .fest-page { padding: 16px 16px 40px; }
-  .fest-page__hero  { padding: 24px 20px; }
-  .fest-page__title { font-size: 26px; }
-  .fest-page__body  { grid-template-columns: 1fr; }
+  .fest-page__body { grid-template-columns: 1fr; }
   .fest-page__sidebar { position: static; }
   .fest-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .fest-filter { flex-wrap: wrap; gap: 8px; padding: 12px; }
-  .fest-filter__search { min-width: 100%; order: -1; }
-  .fest-filter__dropdown { flex: 1; min-width: calc(50% - 4px); }
-  .fest-filter__apply-btn { flex: 1; justify-content: center; }
+  .fest-page__hero { padding: 24px 20px; }
+  .fest-page__title { font-size: 28px; }
+
+  .fest-filter {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+  }
+  .fest-filter__search { min-width: 100%; }
+  .fest-filter__dropdown { flex: 1; min-width: 120px; }
+  .fest-filter__apply-btn,
   .fest-filter__reset-btn { flex: 1; justify-content: center; }
 }
+
 @media (max-width: 480px) {
-  .fest-page { padding: 14px 12px 32px; }
   .fest-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .fest-card__img-wrap { height: 125px; }
-  .fest-card__name  { font-size: 12.5px; }
-  .fest-page__title { font-size: 22px; }
+  .fest-card__img-wrap { height: 130px; }
+  .fest-card__name { font-size: 12.5px; }
+  .fest-page__title { font-size: 24px; }
 }
 
-/* ── BLOG LISTING PAGE ── */
-@media (max-width: 1024px) {
-  .blog-page { padding: 24px 24px 40px; }
-  .blog-page__grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-}
-@media (max-width: 768px) {
-  .blog-page { padding: 16px 16px 40px; }
-  .blog-page__featured { height: 260px; border-radius: 14px; }
-  .blog-page__featured-title { font-size: 18px; }
-  .blog-page__featured-content { padding: 24px 20px; }
-  .blog-page__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .blog-page__filters { flex-direction: column; align-items: stretch; gap: 12px; }
-  .blog-page__search { min-width: 100%; }
-  .blog-page__cats { overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; padding-bottom: 4px; }
-  .blog-page__cats::-webkit-scrollbar { display: none; }
-  .blog-page__cat { white-space: nowrap; flex-shrink: 0; }
-}
-@media (max-width: 480px) {
-  .blog-page { padding: 14px 12px 32px; }
-  .blog-page__grid { grid-template-columns: 1fr; }
-  .blog-page__featured { height: 220px; }
-  .blog-page__featured-title { font-size: 16px; }
-}
+/* ── BLOG PAGE & BLOG DETAIL — responsive rules live in blog.css ── */
 
-/* ── BLOG DETAIL PAGE ── */
-@media (max-width: 1024px) {
-  .blog-detail { padding: 20px 24px 40px; }
-  .blog-detail__top  { grid-template-columns: 1fr 360px; gap: 28px; }
-  .blog-detail__body { grid-template-columns: 1fr 240px; gap: 28px; }
-}
-@media (max-width: 768px) {
-  .blog-detail { padding: 16px 16px 40px; }
-  .blog-detail__top  { grid-template-columns: 1fr; gap: 20px; }
-  .blog-detail__hero-img { height: 240px; border-radius: 14px; }
-  .blog-detail__title { font-size: 24px; }
-  .blog-detail__body { grid-template-columns: 1fr; }
-  .blog-detail__sidebar { position: static; }
-  .blog-detail__info-card { float: none; width: 100%; margin: 0 0 20px 0; }
-  .blog-detail__nav { flex-direction: column; gap: 14px; }
-  .blog-detail__nav-next { text-align: left; margin-left: 0; }
-  .blog-detail__meta { font-size: 12px; gap: 6px; flex-wrap: wrap; }
-}
-@media (max-width: 480px) {
-  .blog-detail { padding: 14px 12px 32px; }
-  .blog-detail__title    { font-size: 20px; }
-  .blog-detail__hero-img { height: 200px; }
-  .blog-detail__section-title { font-size: 17px; }
-}
+/* ── ABOUT PAGE — responsive rules live in about.css ── */
 
-/* ── ABOUT PAGE ── */
-@media (max-width: 1024px) {
-  .about-page { padding: 20px 24px 0; }
-  .about-page__body    { grid-template-columns: 1fr 260px; gap: 28px; }
-  .about-mission__grid { grid-template-columns: repeat(2, 1fr); }
-  .about-stats { padding: 28px 24px; margin: 40px -24px 0; }
-}
-@media (max-width: 768px) {
-  .about-page { padding: 16px 16px 0; }
-  .about-page__hero  { padding: 28px 20px; min-height: unset; }
-  .about-page__title { font-size: 28px; }
-  .about-page__body  { grid-template-columns: 1fr; }
-  .about-page__sidebar { position: static; }
-  .about-mission__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .about-story { flex-direction: column; }
-  .about-story__img { width: 100%; height: 200px; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 32px -16px 0; padding: 0; }
-  .about-stat  { padding: 20px 16px; border-bottom: 1px solid #f0ede8; }
-  .about-stat:nth-child(odd) { border-right: 1px solid #f0ede8; }
-  .about-stat:last-child, .about-stat:nth-last-child(2):nth-child(odd) { border-bottom: none; }
-}
-@media (max-width: 480px) {
-  .about-page { padding: 14px 12px 0; }
-  .about-page__title { font-size: 24px; }
-  .about-mission__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-}
+/* ── CONTACT PAGE — responsive rules live in contact.css ── */
 
-/* ── CONTACT PAGE ── */
-@media (max-width: 1024px) {
-  .contact-page { padding: 20px 24px 40px; }
-}
-@media (max-width: 768px) {
-  .contact-page { padding: 16px 16px 40px; }
-  .contact-page__body { grid-template-columns: 1fr !important; }
-  .contact-page__info { position: static !important; }
-}
-@media (max-width: 480px) {
-  .contact-page { padding: 14px 12px 32px; }
-}
+/* ── MAP PAGE — responsive rules live in mapPage.css ── */
 
-/* ── FAVORITES PAGE ── */
-@media (max-width: 1024px) {
-  .fav-page { padding: 20px 24px 40px; }
-  .fav-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-}
+/* ── AUTH PAGES ── */
 @media (max-width: 768px) {
-  .fav-page { padding: 16px 16px 40px; }
-  .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .fav-stats { padding: 16px 20px; }
-  .fav-stat__num { font-size: 20px; }
-  .fav-toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
-  .fav-toolbar__search { min-width: unset; }
-  .fav-toolbar__right  { justify-content: space-between; }
-  .fav-page__header    { flex-direction: column; gap: 12px; }
-  .fav-list-item { gap: 12px; }
-}
-@media (max-width: 480px) {
-  .fav-page { padding: 14px 12px 32px; }
-  .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .fav-card__img-wrap { height: 130px; }
-  .fav-list-item__img  { width: 64px; height: 54px; }
-  .fav-list-item__name { font-size: 13px; }
-}
-
-/* ── AUTH PAGE ── */
-@media (max-width: 768px) {
-  .auth-page { padding: 24px 16px; min-height: calc(100vh - 60px); }
-  .auth-card { padding: 28px 20px; border-radius: 16px; }
-}
-@media (max-width: 480px) {
-  .auth-page { padding: 16px 12px; }
-  .auth-card { padding: 24px 16px; }
-}
-
-/* ── STATES PAGE ── */
-@media (max-width: 1024px) {
-  .states-page { padding: 20px 24px 40px; }
-  .states-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 768px) {
-  .states-page { padding: 16px 16px 40px; }
-  .states-page__hero  { padding: 28px 20px; }
-  .states-page__title { font-size: 28px; }
-  .states-search { max-width: 100%; }
-  .states-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-}
-@media (max-width: 480px) {
-  .states-page { padding: 14px 12px 32px; }
-  .states-page__title { font-size: 22px; }
-  .states-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .auth-page { padding: 24px 16px; }
+  .auth-card { padding: 28px 20px; }
 }
 
 /* ── FOOTER ── */
@@ -263,31 +272,71 @@
   .footer { padding: 48px 24px 0; }
   .footer__top { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
+
 @media (max-width: 768px) {
   .footer { padding: 40px 16px 0; }
-  .footer__top { grid-template-columns: 1fr; gap: 28px; }
-  .footer__desc { max-width: 100%; }
+  .footer__top { grid-template-columns: 1fr; gap: 32px; }
   .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .footer__bottom-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .footer__bottom-links { justify-content: center; }
+  .footer__desc { max-width: 100%; }
 }
+
 @media (max-width: 480px) {
-  .footer { padding: 32px 12px 0; }
   .footer__top { gap: 24px; }
+  .footer__col-title { font-size: 13.5px; }
 }
 
-/* ── MAP PAGE ── */
-@media (max-width: 768px) {
-  .map-page__body    { flex-direction: column !important; }
-  .map-page__filters { width: 100% !important; max-height: 200px; overflow-y: auto; border-right: none !important; border-bottom: 1px solid #f0ede8; }
-  .map-page__map     { min-height: 400px; }
-}
-
-/* ── GLOBAL BODY OVERFLOW FIX ── */
-html, body, #root {
-  max-width: 100%;
-  overflow-x: hidden;
+/* ── STATES PAGE ── */
+@media (max-width: 1024px) {
+  .states-page { padding: 20px 24px 40px; }
+  .states-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
-  body { overflow-x: hidden; }
+  .states-page { padding: 16px 16px 40px; }
+  .states-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .states-page__hero { padding: 28px 20px; }
+  .states-page__title { font-size: 28px; }
+  .states-search { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .states-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .states-page__title { font-size: 24px; }
+}
+
+/* ── GLOBAL HELPERS ── */
+@media (max-width: 768px) {
+  /* Section padding */
+  section, .section { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Hide scrollbars on horizontal scroll */
+  .scroll-x { overflow-x: auto; scrollbar-width: none; }
+  .scroll-x::-webkit-scrollbar { display: none; }
+
+  /* Typography scale */
+  h1 { font-size: clamp(22px, 5vw, 36px) !important; }
+  h2 { font-size: clamp(18px, 4vw, 28px) !important; }
+}
+
+@media (max-width: 480px) {
+  /* Pagination */
+  .dist-pagination__btn,
+  .dist-pagination__arrow { width: 32px; height: 32px; font-size: 12px; }
+}
+
+@media (max-width: 768px) {
+  /* Home page elements */
+  .hero__content    { padding: 24px 16px; }
+  .stats            { margin: 0; padding: 0; }
+  .browse-deity     { padding: 20px 16px; }
+  .popular          { padding: 0 16px 20px; }
+  .district-explore { padding: 0 16px 20px; }
+}
+
+@media (max-width: 480px) {
+  .hero__content    { padding: 20px 12px; }
+  .browse-deity     { padding: 16px 12px; }
+  .popular          { padding: 0 12px 16px; }
+  .district-explore { padding: 0 12px 16px; }
 }
