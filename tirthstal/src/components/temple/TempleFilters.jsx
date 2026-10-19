@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import { FiSearch, FiChevronDown, FiRefreshCw } from "react-icons/fi";
 import { templesData } from "../../data/temple";
 import "../../styles/temple/templeFilters.css";
-import { useSearchParams } from "react-router-dom";
 const deityFilters = [
   { name: "Shiva",   count: 1200 },
   { name: "Vishnu",  count: 980  },

@@ -11,7 +11,7 @@ import "../../styles/pages/favorites.css";
 const sortOptions = ["Recently Added", "Name A-Z", "Rating", "By Deity"];
 
 export default function Favorites() {
-  const { favorites, removeFavorite, clearAll, isFavorite } = useFavorites();
+  const { favorites, removeFavorite, clearAll } = useFavorites();
   const [view,        setView]        = useState("grid");
   const [search,      setSearch]      = useState("");
   const [sortBy,      setSortBy]      = useState("Recently Added");

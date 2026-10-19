@@ -15,6 +15,7 @@ const navLinks = [
   { label: "Temples",    path: "/temples"   },
   { label: "Districts",  path: "/districts" },
   { label: "Festivals",  path: "/festivals" },
+  { label: "Goseva",     path: "/goseva"    },
   { label: "Temple Map", path: "/map"       },
   { label: "Blog",       path: "/blog"      },
   { label: "About Us",   path: "/about"     },
@@ -64,8 +65,12 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  /* close drawer on route change */
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  /* close drawer on route change (render-adjust pattern, no extra effect pass) */
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setMenuOpen(false);
+  }
 
   /* lock body scroll when drawer open */
   useEffect(() => {

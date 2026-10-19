@@ -1,4 +1,5 @@
-const Festival = require("../models/Festival");
+const Festival    = require("../models/Festival");
+const escapeRegex = require("../utils/escapeRegex");
 
 // ── सभी Festivals ──
 exports.getAllFestivals = async (req, res, next) => {
@@ -7,9 +8,9 @@ exports.getAllFestivals = async (req, res, next) => {
     const query = {};
 
     if (month)    query.month = month;
-    if (deity)    query.deity = new RegExp(deity, "i");
-    if (state)    query.state = new RegExp(state, "i");
-    if (type)     query.type  = new RegExp(type,  "i");
+    if (deity)    query.deity = new RegExp(escapeRegex(deity), "i");
+    if (state)    query.state = new RegExp(escapeRegex(state), "i");
+    if (type)     query.type  = new RegExp(escapeRegex(type),  "i");
     if (upcoming === "true") query.isUpcoming = true;
 
     const festivals = await Festival.find(query).sort({ upcomingDate: 1 });

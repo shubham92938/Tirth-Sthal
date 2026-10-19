@@ -35,5 +35,15 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
-  }
+    // Allow preview/tunnel hosts (e.g. *.e2b.app) in addition to localhost
+    allowedHosts: true,
+    // Dev proxy: browser calls relative "/api" → backend on :3000.
+    // Used only when VITE_API_URL is unset or set to "/api".
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
 })

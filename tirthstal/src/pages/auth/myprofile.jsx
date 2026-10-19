@@ -51,7 +51,6 @@ export default function Profile() {
   };
 
   const userInitial = user?.name?.charAt(0).toUpperCase() || "U";
-  const save = localStorage.setItem(form.name , form.email , form.bio)
 
   return (
     <div className="profile-page">

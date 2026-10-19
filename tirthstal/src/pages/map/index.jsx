@@ -70,6 +70,28 @@ function FlyTo({ center }) {
   return null;
 }
 
+// ── Filter dropdown — module level par rakha hai taaki har render par
+//    naya component type na bane (warna dropdown baar-baar remount hota tha) ──
+const Dropdown = ({ value, options, open, setOpen, onSelect }) => (
+  <div className="map-filter__dropdown" onClick={() => setOpen(!open)}>
+    <span>{value}</span>
+    <FiChevronDown size={13} className={open ? "rotated" : ""} />
+    {open && (
+      <ul className="map-filter__list">
+        {options.map((o) => (
+          <li
+            key={o}
+            className={value === o ? "selected" : ""}
+            onClick={(e) => { e.stopPropagation(); onSelect(o); setOpen(false); }}
+          >
+            {o}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
+
 export default function MapPage() {
   const allTemples = getAllTemples("Madhya Pradesh");
 
@@ -131,26 +153,6 @@ export default function MapPage() {
       prev.includes(label) ? prev.filter((f) => f !== label) : [...prev, label]
     );
   };
-
-  const Dropdown = ({ value, options, open, setOpen, onSelect }) => (
-    <div className="map-filter__dropdown" onClick={() => setOpen(!open)}>
-      <span>{value}</span>
-      <FiChevronDown size={13} className={open ? "rotated" : ""} />
-      {open && (
-        <ul className="map-filter__list">
-          {options.map((o) => (
-            <li
-              key={o}
-              className={value === 0 ? "selected" : ""}
-              onClick={(e) => { e.stopPropagation(); onSelect(o); setOpen(false); }}
-            >
-              {o}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
 
   return (
     <div className="map-page">

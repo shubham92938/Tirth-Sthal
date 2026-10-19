@@ -8,6 +8,7 @@ const quickLinks = [
   { label: "Temples",    path: "/temples" },
   { label: "Districts",  path: "/districts" },
   { label: "Festivals",  path: "/festivals" },
+  { label: "Goseva",     path: "/goseva" },
   { label: "Temple Map", path: "/map" },
   { label: "Blog",       path: "/blog" },
 ];
@@ -38,7 +39,12 @@ export default function Footer() {
         {/* Brand */}
         <div className="footer__brand">
           <Link to="/" className="footer__logo">
-            <img src="/icons/tirthstal.png" alt="Tirthstal" className="footer__logo-img" />
+            <img
+              src="/icons/temple-logo.jpg"
+              alt="Tirthstal"
+              className="footer__logo-img"
+              onError={(e) => { e.target.style.display = "none"; }}
+            />
             <div>
               <p className="footer__logo-name">Tirthstal</p>
               <p className="footer__logo-sub">Sacred Temples, Divine Journey</p>
@@ -127,7 +133,7 @@ export default function Footer() {
       {/* ── Bottom Bar ── */}
       <div className="footer__bottom">
         <p className="footer__copy">
-          © 2025 Tirthstal. All rights reserved. Made with
+          © {new Date().getFullYear()} Tirthstal. All rights reserved. Made with
           <FiHeart size={13} className="footer__heart" />
           for devotees.
         </p>

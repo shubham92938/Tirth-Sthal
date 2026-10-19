@@ -31,7 +31,7 @@ export default function Signup() {
   const [form, setForm]           = useState({ name: "", email: "", password: "", confirm: "" });
   const [showPass,  setShowPass]  = useState(false);
   const [showConf,  setShowConf]  = useState(false);
-  const [loading,   setLoading]   = useState(false);
+  const [loading]                 = useState(false);
   const [error,     setError]     = useState("");
   const [slideIndex,setSlideIndex]= useState(0);
 
@@ -65,9 +65,6 @@ export default function Signup() {
     setSlideIndex((p) => (p === templeSlides.length - 1 ? 0 : p + 1));
 
   const current = templeSlides[slideIndex];
-
-
-  console.log()
 
   return (
     <div className="auth-page">
