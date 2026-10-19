@@ -1,0 +1,53 @@
+/* ── 404 Page (site theme) ── */
+.notfound {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+  display: flex;
+  justify-content: center;
+}
+.notfound__card {
+  text-align: center;
+  background: #fdf8f2;
+  border: 1px solid #f0ede8;
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 520px;
+  width: 100%;
+}
+.notfound__icon { font-size: 52px; margin-bottom: 8px; }
+.notfound__code {
+  font-size: 64px;
+  font-weight: 800;
+  color: #c8610a;
+  line-height: 1;
+  margin: 0 0 10px;
+}
+.notfound__title { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+.notfound__sub { font-size: 14px; color: #888; line-height: 1.7; margin-bottom: 24px; }
+.notfound__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.notfound__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.notfound__btn--primary { background: #c8610a; color: #fff; border: 1.5px solid #c8610a; }
+.notfound__btn--primary:hover { background: #a84f08; }
+.notfound__btn--ghost { background: #fff; color: #333; border: 1.5px solid #e5ddd5; }
+.notfound__btn--ghost:hover { border-color: #c8610a; color: #c8610a; }
+
+@media (max-width: 480px) {
+  .notfound { padding: 36px 16px 48px; }
+  .notfound__code { font-size: 48px; }
+}

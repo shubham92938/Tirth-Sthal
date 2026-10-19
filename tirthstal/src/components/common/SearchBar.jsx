@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Fuse from "fuse.js";
-import { FiSearch, FiMapPin, FiArrowRight, FiX } from "react-icons/fi";
+import { FiSearch, FiArrowRight, FiX } from "react-icons/fi";
 import { getAllTemples } from "../../data/temple";
 import { templesData } from "../../data/temple";
 import "../../styles/common/searchbar.css";

@@ -3,13 +3,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion }            from "framer-motion";
 import { FiLock, FiEye, FiEyeOff, FiArrowLeft } from "react-icons/fi";
 import { resetPasswordAPI }  from "../../services/authServices";
-import { useAuth }           from "../../context/AuthContext";
 import "../../styles/pages/auth.css";
 
 export default function ResetPassword() {
   const { token }     = useParams();
   const navigate      = useNavigate();
-  const { login }     = useAuth();
 
   const [password,    setPassword]    = useState("");
   const [confirm,     setConfirm]     = useState("");

@@ -13,9 +13,6 @@ export const register = async (name, email, password) => {
 // ── Login ──
 export const login = async (email, password) => {
   const { data } = await API.post("/auth/login", { email, password });
-
-  console.log("LOGIN RESPONSE:", data);
-  
   if (data.token) {
     localStorage.setItem("tirthstal_token", data.token);
     localStorage.setItem("tirthstal_user", JSON.stringify(data.user));
@@ -23,9 +20,11 @@ export const login = async (email, password) => {
   return data;
 };
 
-export const checkEmail = async (email)=>{
-  const response = await API.post("/auth/check-email")
-}
+// ── Check Email ── (signup: email pehle se registered hai ya nahi)
+export const checkEmail = async (email) => {
+  const { data } = await API.post("/auth/check-email", { email });
+  return data; // { success, exists }
+};
 
 // ── Logout ──
 export const logout = async () => {
@@ -39,21 +38,25 @@ export const logout = async () => {
 
 // ── Get Profile ──
 export const getProfile = async () => {
-  const { data } = await API.get("api/auth/profile");
+  const { data } = await API.get("/auth/profile");
   return data.user;
 };
 
 // ── Update Profile ──
 export const updateProfile = async (updates) => {
-  const { data } = await API.put("api/auth/profile", updates);
+  const { data } = await API.put("/auth/profile", updates);
   localStorage.setItem("tirthstal_user", JSON.stringify(data.user));
   return data.user;
 };
 
 // ── Get current user from localStorage ──
 export const getCurrentUser = () => {
-  const user = localStorage.getItem("tirthstal_user");
-  return user ? JSON.parse(user) : null;
+  try {
+    const user = localStorage.getItem("tirthstal_user");
+    return user ? JSON.parse(user) : null;
+  } catch {
+    return null; // corrupted storage par app crash na ho
+  }
 };
 
 // Forgot Password

@@ -1,0 +1,105 @@
+/* ── Home: Goseva CTA Banner (site theme) ── */
+.goseva-cta {
+  padding: 40px 60px;
+  background: #fff;
+  border-bottom: 1px solid #f0ede8;
+}
+
+.goseva-cta__banner {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+}
+.goseva-cta__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.goseva-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(20, 8, 0, 0.85) 0%,
+    rgba(20, 8, 0, 0.65) 40%,
+    rgba(20, 8, 0, 0.25) 70%,
+    rgba(20, 8, 0, 0.0) 100%
+  );
+}
+.goseva-cta__content {
+  position: relative;
+  z-index: 1;
+  padding: 40px 48px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.goseva-cta__badge {
+  background: rgba(200, 97, 10, 0.9);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+.goseva-cta__title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0;
+}
+.goseva-cta__title span { color: #ffb066; }
+.goseva-cta__sub {
+  font-size: 14.5px;
+  color: #e8ded2;
+  line-height: 1.7;
+}
+.goseva-cta__points {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.goseva-cta__point {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+.goseva-cta__btn {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #c8610a;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, gap 0.2s;
+}
+.goseva-cta__btn:hover { background: #a84f08; gap: 12px; }
+
+@media (max-width: 768px) {
+  .goseva-cta { padding: 24px 16px; }
+  .goseva-cta__content { padding: 28px 22px; }
+  .goseva-cta__title { font-size: 24px; }
+}
+@media (max-width: 480px) {
+  .goseva-cta { padding: 20px 12px; }
+  .goseva-cta__title { font-size: 21px; }
+}

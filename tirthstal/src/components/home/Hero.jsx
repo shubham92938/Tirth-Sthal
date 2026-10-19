@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { FiSearch, FiMapPin, FiChevronDown, FiArrowRight } from "react-icons/fi";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../context/SearchContext";
 import { templesData } from "../../data/temple";
@@ -16,57 +14,16 @@ const popularSearches = [
 export default function Hero() {
   const navigate = useNavigate();
   const {
-    searchQuery,   setSearchQuery,
-    selectedState, setSelectedState,
+    setSearchQuery,
     setSearchResults, setHasSearched,
   } = useSearch();
   const {t} = useTranslation();
-
-  const [stateOpen, setStateOpen] = useState(false);
-
-  // Get all states from data
-  const states = ["All States", ...Object.keys(templesData)];
-
-  const handleSearch = () => {
-    if (!searchQuery.trim()) return;
-
-    // Get temples based on selected state
-    let templeList = [];
-    if (selectedState === "All States") {
-      templeList = Object.values(templesData).flatMap((s) =>
-        Object.values(s).flat()
-      );
-    } else {
-      const stateData = templesData[selectedState] || {};
-      templeList = Object.values(stateData).flat();
-    }
-
-    // Filter by search query
-    const q = searchQuery.toLowerCase();
-    const results = templeList.filter((t) =>
-      t.name.toLowerCase().includes(q)     ||
-      t.deity.toLowerCase().includes(q)    ||
-      t.district.toLowerCase().includes(q) ||
-      t.type.toLowerCase().includes(q)     ||
-      t.description.toLowerCase().includes(q)
-    );
-
-    setSearchResults(results);
-    setHasSearched(true);
-
-    // Navigate to temples page with search
-    navigate(`/temples?search=${encodeURIComponent(searchQuery)}&state=${encodeURIComponent(selectedState)}`);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") handleSearch();
-  };
 
   const handlePopularSearch = (tag) => {
     setSearchQuery(tag);
 
     // Filter temples
-    let templeList = Object.values(templesData).flatMap((s) =>
+    const templeList = Object.values(templesData).flatMap((s) =>
       Object.values(s).flat()
     );
     const q = tag.toLowerCase();
@@ -94,7 +51,7 @@ export default function Hero() {
       <div className="hero__content">
 
         {/* Badge */}
-        <motion.div 
+        <motion.div
           className="hero__badge"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,7 +71,7 @@ export default function Hero() {
           {t("hero.heading1")} <br />
           <span className="hero__heading-orange">{t("hero.heading2")}</span> {t("hero.heading3")}
         </motion.h1>
-         
+
 
         {/* Sub */}
         <motion.p

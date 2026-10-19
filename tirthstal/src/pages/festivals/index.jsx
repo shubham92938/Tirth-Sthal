@@ -92,7 +92,7 @@ export default function Festivals() {
 
       {/* ── Hero Header ── */}
       <div className="fest-page__hero">
-          <img src="/images/hero-temples.jpeg" class="dist-main__hero-bg" alt="Festivals"
+          <img src="/images/hero-temples.jpeg" className="dist-main__hero-bg" alt="Festivals"
             onError={(e) => e.target.style.display = "none"} />
             <div className="dist-main__hero-overlay" />
         <div className="fest-page__hero-left">

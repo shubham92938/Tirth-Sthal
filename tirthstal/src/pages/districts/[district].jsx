@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import {
@@ -24,7 +24,6 @@ const Districts = () => {
   const [sortBy, setSortBy] = useState('popularity');
 
   const districtName = 'Ujjain';
-  const stateName = 'Maharashtra';
 
   const districtTemples = useMemo(() => {
     let filtered = templesData.filter(
@@ -243,4 +242,3 @@ const Districts = () => {
 };
 
 export default Districts;
-```

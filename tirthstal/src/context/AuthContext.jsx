@@ -1,10 +1,9 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import {
   login as loginService,
   register as registerService,
   logout as logoutService,
   getCurrentUser,
-  isAuthenticated,
 } from "../services/authServices";
 
 
@@ -26,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed";
       setError(msg);
-      throw new Error(msg);
+      throw new Error(msg, { cause: err });
     } finally {
       setLoading(false);
     }
@@ -42,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       const msg = err.response?.data?.message || "Registration failed";
       setError(msg);
-      throw new Error(msg);
+      throw new Error(msg, { cause: err });
     } finally {
       setLoading(false);
     }

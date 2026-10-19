@@ -1,4 +1,5 @@
-const Temple = require("../models/Temple");
+const Temple      = require("../models/Temple");
+const escapeRegex = require("../utils/escapeRegex");
 
 // ── सभी temples ──
 exports.getAllTemples = async (req, res, next) => {
@@ -18,8 +19,8 @@ exports.getAllTemples = async (req, res, next) => {
     // Filters
     if (state    && state    !== "All States")    query.state    = state;
     if (district && district !== "All Districts") query.district = district;
-    if (deity    && deity    !== "All Deities")   query.deity    = new RegExp(deity,    "i");
-    if (type     && type     !== "All Types")     query.type     = new RegExp(type,     "i");
+    if (deity    && deity    !== "All Deities")   query.deity    = new RegExp(escapeRegex(deity), "i");
+    if (type     && type     !== "All Types")     query.type     = new RegExp(escapeRegex(type),  "i");
 
     // Sort
     let sortBy = "-createdAt";
@@ -65,7 +66,6 @@ exports.getTempleBySlug = async (req, res, next) => {
 exports.createTemple = async (req, res, next) => {
   try {
     const temple = await Temple.create(req.body);
-    console.log("hello")
     res.status(201).json({ success: true, temple });
   } catch (error) {
     next(error);
@@ -110,12 +110,13 @@ exports.searchSuggestions = async (req, res, next) => {
       return res.status(200).json({ success: true, suggestions: [] });
     }
 
+    const rx = new RegExp(escapeRegex(q), "i");
     const temples = await Temple.find({
       $or: [
-        { name:     new RegExp(q, "i") },
-        { deity:    new RegExp(q, "i") },
-        { district: new RegExp(q, "i") },
-        { type:     new RegExp(q, "i") },
+        { name:     rx },
+        { deity:    rx },
+        { district: rx },
+        { type:     rx },
       ],
       isActive: true,
     })

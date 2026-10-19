@@ -40,21 +40,6 @@ const socials = [
 ];
 
 export default function About() {
-  function useCountUp(end, duration = 2000, inView = false) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const step = end / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) { setCount(end); clearInterval(timer); }
-      else setCount(Math.floor(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, end, duration]);
-  return count;
-}
 
 
 const statsRef = useRef(null);

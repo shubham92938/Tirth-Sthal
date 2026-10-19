@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Review = require("../models/Review");
 const Temple = require("../models/Temple");
 
@@ -109,6 +110,9 @@ exports.markHelpful = async (req, res, next) => {
       { $inc: { helpful: 1 } },
       { new: true }
     );
+    if (!review) {
+      return res.status(404).json({ success: false, message: "Review not found" });
+    }
     res.status(200).json({ success: true, helpful: review.helpful });
   } catch (error) {
     next(error);
@@ -117,8 +121,14 @@ exports.markHelpful = async (req, res, next) => {
 
 // ── Internal helper: temple rating recalculate ──
 const updateTempleRating = async (templeId) => {
+  // aggregate() string ko ObjectId me auto-cast nahi karta (find karta hai),
+  // isliye pehle convert karo — warna $match kabhi match hi nahi hoga.
+  const oid = mongoose.isValidObjectId(templeId)
+    ? new mongoose.Types.ObjectId(templeId)
+    : templeId;
+
   const result = await Review.aggregate([
-    { $match: { temple: templeId } },
+    { $match: { temple: oid } },
     { $group: { _id: "$temple", avgRating: { $avg: "$rating" }, count: { $sum: 1 } } },
   ]);
 

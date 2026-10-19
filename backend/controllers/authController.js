@@ -221,20 +221,11 @@ exports.resetPassword = async (req, res, next) => {
     user.resetPasswordExpire = undefined;
     await user.save();
 
-    // ── Auto login karo ──
-    // const jwtToken = user.getJwtToken();
-
-    res.status(200).json({
-      success: true,
-      message: "Password reset successful!",
-      token:   token,
-      user: {
-        id:    user._id,
-        name:  user.name,
-        email: user.email,
-        role:  user.role,
-      },
-    });
+    // ── Auto login: fresh JWT bhejo ──
+    // (Pehle galti se reset-token hi `token` me ja raha tha, jisse
+    //  frontend use JWT samajh kar save kar leta tha aur har
+    //  protected request 401 ho jati thi.)
+    sendToken(user, 200, res);
 
   } catch (error) {
     next(error);
@@ -261,4 +252,23 @@ exports.updateProfile = async (req, res, next) => {
 // ── Logout ──
 exports.logout = (req, res) => {
   res.status(200).json({ success: true, message: "Logged out successfully" });
+};
+
+// ── Check Email ── (signup form: email pehle se registered hai ya nahi)
+exports.checkEmail = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide your email",
+      });
+    }
+
+    const user = await User.findOne({ email: String(email).toLowerCase() });
+    res.status(200).json({ success: true, exists: !!user });
+  } catch (error) {
+    next(error);
+  }
 };

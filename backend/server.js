@@ -14,6 +14,7 @@ const districtRoutes = require("./routes/districtRoutes");
 const festivalRoutes = require("./routes/festivalRoutes");
 const blogRoutes     = require("./routes/blogRoutes");
 const reviewRoutes   = require("./routes/reviewRoutes");
+const gosevaRoutes   = require("./routes/gosevaRoutes");
 
 connectDB();
 
@@ -21,8 +22,20 @@ const app = express();
 
 // ── Middleware ──
 app.use(helmet());
+
+// CLIENT_URL me comma-separated multiple origins diye ja sakte hain
+// (e.g. local dev + production domain). Bina env ke local dev origins allow.
+const allowedOrigins = (process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(",")
+  : ["http://localhost:5173", "http://localhost:4173", "http://127.0.0.1:5173"]
+).map((o) => o.trim()).filter(Boolean);
+
 app.use(cors({
-  origin:      process.env.CLIENT_URL || "http://localhost:5173",
+  origin: (origin, callback) => {
+    // Non-browser tools (curl/Postman) ka origin nahi hota — allow
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error(`CORS blocked: ${origin}`));
+  },
   credentials: true,
 }));
 app.use(morgan("dev"));
@@ -35,7 +48,7 @@ app.use("/api/temples",   templeRoutes);
 app.use("/api/districts", districtRoutes);
 app.use("/api/festivals", festivalRoutes);
 app.use("/api/blogs",     blogRoutes);
-
+app.use("/api/goseva",    gosevaRoutes);
 
 // ── Nested review route: /api/temples/:templeId/reviews ──
 app.use("/api/temples/:templeId/reviews", reviewRoutes);
@@ -49,13 +62,13 @@ app.get("/api/health", (req, res) => {
     routes: [
       "POST   /api/auth/register",
       "POST   /api/auth/login",
-      "POST   /api/auth/checkemail",
-      "POST   /api/auth/resetpassword",
+      "POST   /api/auth/check-email",
+      "POST   /api/auth/forgot-password",
+      "POST   /api/auth/reset-password/:token",
       "GET    /api/auth/profile",
       "PUT    /api/auth/profile",
       "GET    /api/temples",
       "GET    /api/temples/search?q=",
-      // "POST   /api/createTemple",
       "GET    /api/temples/:slug",
       "POST   /api/temples/:id/favorite",
       "GET    /api/temples/:templeId/reviews",
@@ -69,6 +82,13 @@ app.get("/api/health", (req, res) => {
       "GET    /api/blogs/featured",
       "GET    /api/blogs/categories",
       "GET    /api/blogs/:slug",
+      "GET    /api/goseva/stats",
+      "GET    /api/goseva/gaushalas",
+      "GET    /api/goseva/gaushalas/:slug",
+      "POST   /api/goseva/pledges",
+      "GET    /api/goseva/pledges/mine",
+      "GET    /api/goseva/pledges (admin)",
+      "PUT    /api/goseva/pledges/:id/status (admin)",
     ],
   });
 });
@@ -77,7 +97,6 @@ app.get("/api/health", (req, res) => {
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
-
 
 // ── Error Handler ──
 app.use(errorHandler);
